@@ -6,7 +6,7 @@ import Login from "./components/Login.jsx";
 import axios from "axios";
 import { UserContextProvider } from "./components/UserContext.jsx";
 import Userpage from "./components/Userpage.jsx";
-import Adminpage from "./components/AdminPage.jsx";
+import Adminpage from "./components/Adminpage.jsx";
 import AdminSignUp from "./components/AdminSignUp.jsx";
 import AdminDetails from "./components/AdminDetails.jsx";
 import AdminNavbar from "./components/AdminNavbar.jsx";
