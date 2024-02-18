@@ -35,7 +35,7 @@ const Login = () => {
       }
 
       if (isValid) {
-        const response = await axios.post("http://localhost:3000/login", {
+        const response = await axios.post("/login", {
           mail,
           password,
         });
@@ -69,7 +69,7 @@ const Login = () => {
         isValid = false;
       }
       if (isValid) {
-        const res = await axios.post("http://localhost:3000/Adminlogin", {
+        const res = await axios.post("/Adminlogin", {
           mail: adminMail,
           password: adminPassword,
         });

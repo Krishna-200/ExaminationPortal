@@ -45,7 +45,7 @@ const SignUp = () => {
         isValid = false;
       } else {
         setLoadingOtp(true);
-        const res = await axios.post("http://localhost:3000/otp", {
+        const res = await axios.post("/otp", {
           mail,
           fullname,
         });
@@ -68,7 +68,7 @@ const SignUp = () => {
   const handleOtpVerify = async () => {
     setLoadingVerify(true);
     try {
-      const res = await axios.post("http://localhost:3000/verifyOtp", {
+      const res = await axios.post("/verifyOtp", {
         mail,
         otp,
       });
@@ -136,7 +136,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/AdminSignUp", {
+      const response = await axios.post("/AdminSignUp", {
         fullname,
         empid,
         password,
