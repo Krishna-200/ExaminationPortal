@@ -1,0 +1,221 @@
+.container {
+  padding-top: 30px;
+  padding-left: 90px;
+  padding-right: 70px;
+  background-color: rgb(253, 247, 248);
+  font-family: roboto;
+  /* height: 100vh; */
+}
+.mainHeading {
+  display: flex;
+  justify-content: space-between;
+}
+.mainHeading h1 {
+  /* padding-left: 3rem; */
+  font-size: 1.6rem;
+  color: rgb(234, 76, 128);
+  text-transform: capitalize;
+}
+.mainHeading h2 {
+  font-size: 1rem;
+  background-color: red;
+  padding-top: 10px;
+  padding-left: 14px;
+  padding-right: 14px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.heading {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  /* background-color: yellow; */
+}
+.subjectName {
+  font-weight: 500;
+  text-transform: capitalize;
+
+  font-size: 1.5rem;
+  margin: 0px;
+}
+.time {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.time :first-child {
+  margin-right: 20px;
+}
+.time :nth-child(2) {
+  color: rgb(38, 194, 38);
+}
+
+.mainComponent {
+  font-weight: 500;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.questions {
+  margin-right: 20px;
+  /* margin-top: 2rem; */
+  padding: 30px;
+  width: 70%;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.radioButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 0.5em;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.radioButtons input {
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  height: 16px;
+  width: 14px;
+}
+
+.radioButtons label {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.questionNos {
+  /* margin-top: 2rem; */
+  padding: 30px;
+  width: 30%;
+  background-color: white;
+  word-wrap: break-word;
+  border-radius: 20px;
+}
+.questions h2 {
+  font-weight: 500;
+}
+.number {
+  border: 2px solid rgb(65, 65, 237);
+  border-radius: 25px;
+  padding: 4px;
+  color: rgb(63, 63, 63);
+  margin: 5px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+}
+.numbers span {
+  display: inline-block;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+.prev,
+.next,
+.finish {
+  padding: 15px;
+  background-color: white;
+  outline: none;
+  border: 0px;
+  color: rgb(180, 130, 20);
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0px 20px 50px 10px;
+}
+.next {
+  color: rgb(80, 80, 239);
+}
+.finish {
+  background-color: rgb(76, 76, 246);
+  color: white;
+}
+
+.active {
+  color: white;
+  background-color: blue;
+}
+
+.greenNumber {
+  background-color: green;
+  color: white;
+  border: green;
+}
+
+.modal {
+  font-family: roboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+  flex-direction: column;
+  padding: 100px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgb(197, 197, 197);
+}
+
+.modal {
+  height: 1vh;
+  width: 20%;
+}
+.modal button {
+  cursor: pointer;
+  padding: 15px;
+}
+
+.modalButtons {
+  margin-top: 10px;
+  display: flex;
+  gap: 3rem;
+}
+.modalButtons button {
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  background-color: red;
+  color: white;
+  display: none;
+}
+
+.modalButtons :nth-child(1) {
+  background-color: rgb(61, 192, 70);
+}
+
+.webcam {
+  width: 200px;
+  height: 200px;
+}
+
+.exitAndCam {
+  display: flex;
+  align-items: start;
+}
+
+.exitAndCam h2 {
+  padding: 10px;
+  margin-right: 40px;
+}

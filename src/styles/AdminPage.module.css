@@ -1,0 +1,523 @@
+.container {
+  background-image: url("../Images/WelcomeImage.jpeg");
+  background-size: cover;
+  height: 100vh;
+  font-family: roboto;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.47);
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-right: 60px;
+  cursor: pointer;
+}
+.navList {
+  font-weight: 600;
+}
+.navList :hover {
+  color: #7a52f4;
+}
+
+.navbar button {
+  margin-right: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 0;
+  cursor: pointer;
+  background-color: #7a52f4;
+  color: white;
+  font-weight: 600;
+  border-radius: 15px;
+}
+
+.homeContaier {
+  width: 40%;
+  /* border: 2px solid black; */
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+}
+.homeText h2 {
+  font-weight: 600;
+  margin: 0;
+}
+.homeText h3 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.homeText h4 {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 10px;
+  color: #444;
+}
+
+.detailsHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  color: white;
+}
+.detailsHeader button {
+  background-color: #7a52f4;
+  border: 0;
+  width: 50px;
+  height: 30px;
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.details {
+  /* border: 2px solid red; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: space-around; */
+  margin-left: 200px;
+  margin-right: 200px;
+  background-color: white;
+  padding: 50px;
+  border-radius: 25px;
+}
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detailContainer {
+  border-radius: 25px;
+  padding: 50px;
+  padding-left: 0;
+  /* padding-right: 100px; */
+  /* border: 2px solid red; */
+  background-color: #f2f7fa;
+}
+.detail h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 30px;
+}
+.detail :first-child {
+  color: #7a52f4;
+}
+
+.studentMenu ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #7a52f4;
+  margin-left: 10px;
+}
+
+.studentMenu ul li {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.studentMenu hr {
+  border: 1px solid #7a52f4;
+  margin-left: 40px;
+}
+
+.studentData li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.testHeading {
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #f0eded;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+.testHeading p {
+  margin-left: 20px;
+  margin: 0;
+}
+
+.examDetails,
+.mcqTemp {
+  width: 25%;
+  /* border: 2px solid red; */
+}
+.test {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 80px; */
+  margin-top: 30px;
+}
+.test p {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  margin-left: 10px;
+  font-size: 25px;
+  margin-top: 0px;
+}
+.detailsForm,
+.mcqForm,
+.questions {
+  background-color: #eee8f4;
+  padding: 20px;
+  border-radius: 20px;
+  height: 83%;
+}
+.detailsForm form,
+.mcqForm form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  /* padding: 10px; */
+  /* border: 2px solid black; */
+}
+
+.detailsForm select,
+.detailsForm input,
+.mcqForm input,
+.mcqForm select {
+  outline: none;
+  /* border: 2px solid black; */
+  border: 0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: #79747e;
+}
+
+.disabledInput {
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+.detailsForm label {
+  display: flex;
+  align-items: center;
+  /* gap: 1rem; */
+  justify-content: space-around;
+}
+.detailButtons,
+.mcqButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.detailButtons button,
+.mcqButtons button {
+  cursor: pointer;
+  border-radius: 15px;
+  color: white;
+  padding: 8px;
+  width: 40%;
+  background-color: black;
+  margin-right: 10px;
+  margin-top: 15px;
+  border: 0;
+}
+
+.detailButtons button:disabled {
+  background-color: #81adfa;
+  cursor: not-allowed;
+}
+
+.detailButtons :nth-child(1),
+.mcqButtons :nth-child(1) {
+  background-color: #3b84fe;
+}
+.detailButtons :nth-child(2),
+.mcqButtons :nth-child(2) {
+  background-color: #ff9500;
+}
+
+.questionsTemp {
+  height: 60vh;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.questions {
+  overflow: auto;
+  height: 100%;
+}
+.questions::-webkit-scrollbar {
+  width: 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.questions::-webkit-scrollbar-track {
+  /* border-radius: 8px; */
+  border-top-right-radius: 20px;
+  background: #eee8f4;
+  border-bottom-right-radius: 20px;
+}
+
+.questions::-webkit-scrollbar-thumb {
+  /* border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px; */
+  border-radius: 20px;
+  background: #a5a4a5;
+}
+
+.questions::-webkit-scrollbar-thumb:hover {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #807f80;
+}
+
+.questions h5 {
+  font-weight: normal;
+  margin: 2px;
+  margin-left: 20px;
+  color: black;
+  font-size: 15px;
+}
+
+.questionTest :nth-child(1) {
+  margin-left: 4px;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.questionTest :nth-child(2) {
+  margin-left: 10px;
+  margin-bottom: 7px;
+}
+
+.questionTest button {
+  margin: 10px;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.questionTest :nth-child(8) {
+  background-color: green;
+}
+
+.questionTest :nth-child(9) {
+  background-color: red;
+}
+
+.finishButton {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.finishButton button {
+  color: white;
+  margin-top: 10px;
+  background-color: green;
+  padding: 10px 40px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+}
+
+.exams {
+  display: flex;
+  /* align-items: center;  */
+  justify-content: space-evenly;
+  /* border: 2px solid red; */
+}
+
+.scheduledExam,
+.practiceExam,
+.doneExam {
+  /* border: 2px solid red; */
+  border-radius: 20px;
+  height: 60vh;
+  overflow-y: auto;
+  margin-top: 30px;
+}
+
+.scheduledExam::-webkit-scrollbar,
+.practiceExam::-webkit-scrollbar,
+.doneExam::-webkit-scrollbar {
+  width: 1px;
+}
+
+.scheduledExam {
+  background-color: #d7ecfd;
+}
+
+.practiceExam {
+  background-color: #ffd8e4;
+}
+.doneExam {
+  background-color: #eaddff;
+}
+
+.actualComponent,
+.doneComponent,
+.practiceComponent {
+  padding: 10px 200px 2px 10px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.actualComponent h3,
+.doneComponent h3,
+.practiceComponent h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.scheduledExam h2,
+.practiceExam h2,
+.doneExam h2 {
+  font-size: 20px;
+  margin-left: 15px;
+  /* background-color: white; */
+}
+
+.scheduledExam p,
+.practiceExam p,
+.doneExam p {
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.actualComponent {
+  background-color: #aad3ff;
+}
+.practiceComponent {
+  background-color: #ffb3d2;
+}
+
+.AllExamsSubject {
+  text-transform: capitalize;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.allExamsdate {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #49454f;
+  margin-left: 4px;
+}
+
+.allExamsMarks {
+  display: flex;
+  flex-direction: row;
+}
+
+.allExamsMarks h3 {
+  background-color: white;
+  padding: 4px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+.allExamsMarks :nth-child(2) {
+  margin-left: 10px;
+}
+
+.allExamsYear {
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-left: 4px;
+}
+
+.allExamsDelete,
+.allExamsEdit {
+  cursor: pointer;
+  border: 0;
+  color: white;
+  padding: 7px;
+  border-radius: 15px;
+  margin: 0px 0px 6px 0px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.allExamsDelete {
+  background-color: rgb(184, 26, 26);
+}
+
+.allExamsEdit {
+  padding-right: 13px;
+  padding-left: 13px;
+  margin-right: 10px;
+  background-color: green;
+}
+
+.noExam {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.noExam button {
+  margin-top: 10px;
+  background-color: green;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+  padding: 10px 50px;
+}
+
+.startExam,
+.disabled {
+  background-color: green;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  margin: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: rgb(47, 97, 47);
+  cursor: not-allowed;
+}
+
+.actualComponent button :disabled {
+  background-color: white;
+}
+
+.pass,
+.fail {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.pass {
+  background-color: green;
+}
+.fail {
+  background-color: red;
+}

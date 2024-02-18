@@ -1,0 +1,74 @@
+.container {
+  background-image: url("../Images/WelcomeImage.jpeg");
+  background-size: cover;
+  height: 100vh;
+  font-family: roboto;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.47);
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-right: 60px;
+  cursor: pointer;
+}
+.navList {
+  font-weight: 600;
+}
+.navList :hover {
+  color: #7a52f4;
+}
+
+.navbar button {
+  margin-right: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 0;
+  cursor: pointer;
+  background-color: #7a52f4;
+  color: white;
+  font-weight: 600;
+  border-radius: 15px;
+}
+
+.homeContainer {
+  display: flex;
+}
+
+.homeText {
+  width: 40%;
+  /* border: 2px solid red; */
+  color: white;
+  display: flex;
+  align-items: start;
+  height: 90vh;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 44px;
+  margin-left: 100px;
+}
+
+.homeText h3 {
+  /* border: 2px solid red; */
+  margin: 0;
+}
+
+.homeText h4 {
+  width: 70%;
+  font-size: 25px;
+  color: #45494f;
+}
+
+.homeImage {
+  width: 60%;
+  border: 2px solid red;
+}
