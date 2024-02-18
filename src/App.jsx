@@ -20,7 +20,7 @@ import AllResutls from "./components/AllResutls.jsx";
 import UserResult from "./components/UserResult.jsx";
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3000";
+  axios.defaults.baseURL = "https://examniationportal-backend.onrender.com";
   axios.defaults.withCredentials = true;
 
   return (
