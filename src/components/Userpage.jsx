@@ -7,6 +7,7 @@ import UserNavbar from "./UserNavbar";
 const Userpage = () => {
   const param = useParams().id;
   const [fullname, setFullname] = useState("");
+  const [mail, setMail] = useState("");
 
   async function getUserData() {
     try {
