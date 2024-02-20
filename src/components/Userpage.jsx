@@ -10,9 +10,7 @@ const Userpage = () => {
 
   async function getUserData() {
     try {
-      const { data } = await axios.get(
-        "http://localhost:3000/UserPage/" + param
-      );
+      const { data } = await axios.get("/UserPage/" + param);
       setFullname(data.fullname);
       setMail(data.mail);
       console.log(data);
