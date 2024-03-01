@@ -43,7 +43,7 @@ const UserAllExams = () => {
   }, [id]);
 
   async function handleClickExam(exam) {
-    navigate("/ExamPage/" + id, { state: { exam } });
+    navigate("/InstructionPage/" + id, { state: { exam } });
   }
 
   return (

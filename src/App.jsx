@@ -18,6 +18,7 @@ import UserDetails from "./components/UserDetails.jsx";
 import UserAllExams from "./components/UserAllExams.jsx";
 import AllResutls from "./components/AllResutls.jsx";
 import UserResult from "./components/UserResult.jsx";
+import InstructionPage from "./components/InstructionPage.jsx";
 
 function App() {
   axios.defaults.baseURL = "https://examniationportal-backend.onrender.com";
@@ -35,6 +36,11 @@ function App() {
         <Route exact path="/UserAllExams/:id" element={<UserAllExams />} />
         <Route exact path="/UserNavbar/:id" element={<UserNavbar />} />
         <Route exact path="/UserResult/:id" element={<UserResult />} />
+        <Route
+          exact
+          path="/InstructionPage/:id"
+          element={<InstructionPage />}
+        />
         <Route exact path="/AdminPage/:id" element={<Adminpage />} />
         <Route exact path="/AdminSignUp" element={<AdminSignUp />} />
         <Route exact path="/AdminDetails/:id" element={<AdminDetails />} />
