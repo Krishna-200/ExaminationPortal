@@ -5,42 +5,171 @@
 }
 
 .container {
-  background-size: cover;
-  background-image: url("../Images/WelcomeImage.jpeg");
+  background-color: #6750a4;
   width: 100%;
   height: 100vh;
   font-family: roboto;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.userLogin {
+  background-color: #7246f6;
+  background: linear-gradient(
+    90deg,
+    rgba(114, 70, 246, 1) 49%,
+    rgba(255, 255, 255, 1) 49%
+  );
+  overflow: hidden;
+}
+
+.adminLogin {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(250, 82, 149, 1) 49%
+  );
+}
+
+.userSVG {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 20vh;
+  animation: 0.6s ease-in-out slideUser;
+}
+
+.mainContainer {
+  z-index: 99;
+  animation: 0.6s ease-in-out slideUser;
+}
+
+@keyframes slideUser {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hideUserSVG {
+  opacity: 0;
+  z-index: -1;
+  animation: 0.6s ease-in-out hideSvg;
+}
+
+.hideUserLogin {
+  opacity: 0;
+  z-index: -1;
+  animation: 0.6s ease-in-out hideSvg;
+}
+
+.hideAdmin {
+  opacity: 0;
+  z-index: -1;
+  animation: 0.6s ease-in-out hideSvg;
+}
+
+@keyframes hideSvg {
+  0% {
+    opacity: 1;
+    transform: translate3d(-30px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.userSVG img {
+  width: 40vh;
+}
+
+.userSVG h1,
+.adminSVG h1 {
+  font-family: "Cinzel", serif;
+  font-size: 50px;
+}
+
+.userSVG h2,
+.adminSVG h2 {
+  margin-left: 40px;
+  color: beige;
+  margin-top: 50px;
+  font-family: "Syne", sans-serif;
+}
+
+.userSVG button,
+.adminSVG button {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fa5295fa;
+  outline: none;
+  cursor: pointer;
+  top: 72vh;
+  color: white;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.adminSVG {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  position: absolute;
+  right: 15vh;
+  align-items: center;
+  opacity: 0;
+  margin-right: 30px;
+}
+
+.adminSVG img {
+  width: 50vh;
+}
+
+.adminSVG button {
+  background-color: #7246f6;
 }
 
 .mainContainer,
 .adminContainer {
-  background-color: #e8def8;
   border-radius: 28px;
   padding: 30px;
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .mainContainer h2,
 .adminContainer h2 {
-  /* margin-left: 30px; */
-  margin-top: 30px;
-  margin-bottom: 0;
   font-size: 45px;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: "Syne", sans-serif;
 }
 
-.mainContainer h3,
-.adminContainer h3 {
-  /* margin-left: 30px; */
-  font-size: 16px;
-  color: #79747e;
-  font-weight: 300;
-  margin-top: 4px;
-  margin-bottom: 40px;
-}
+/* .welcome {
+  background-color: rgb(114, 70, 246);
+  padding: 20px;
+  padding-right: 40px;
+  color: white;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Syne", sans-serif;
+  -webkit-box-shadow: 20px 32px 28px -28px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 20px 32px 28px -28px rgba(0, 0, 0, 0.75);
+  box-shadow: 20px 32px 28px -28px rgba(0, 0, 0, 0.75);
+} */
 
 .mainContainer form,
 .adminContainer form {
@@ -48,26 +177,37 @@
   flex-direction: column;
 }
 
-.form input {
-  margin: 4px;
-  padding: 15px;
-  border: 1px solid #6750a4;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-radius: 8px;
-  /* margin-bottom: 20px; */
+.input {
+  border-radius: 14px;
   background-color: #f7f2fa;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.form label {
-  font-size: 12px;
-  margin-left: 4px;
+.input :nth-child(1) {
+  color: rgb(70, 68, 68);
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.input input {
+  background-color: #f7f2fa;
+  padding: 20px;
+
+  border: none !important;
+  outline: none !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  width: 300px;
+}
+.form {
+  display: flex;
+  align-items: center;
 }
 
 .form button {
-  margin: 4px;
   padding: 15px;
   border-radius: 20px;
   border: none;
@@ -75,29 +215,68 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 50%;
   margin-top: 20px;
 }
 
 .mainContainer h4,
 .adminContainer h4 {
   color: #79747e;
-  margin-left: 60px;
 }
 
 .adminContainer {
-  margin-right: 120px;
-  margin-left: 10px;
-  background-color: #f6e3f8;
+  /* margin-right: 200px; */
+  /* margin-left: 10px; */
+  opacity: 0;
 }
 
 .adminContainer .form button {
   background-color: rgb(252, 49, 131, 0.98);
 }
 
-.error {
-  margin-left: 8px;
-  margin-top: 4px;
-  margin-bottom: 20px;
-  color: red;
-  font-size: 12px;
+.animate {
+  animation: 1.2s ease-in-out slide;
+  opacity: 1;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.adminMailError,
+.adminPasswordError,
+.mailError,
+.passwordError {
+  border: 2px solid rgb(245, 109, 109);
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

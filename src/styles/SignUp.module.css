@@ -5,80 +5,150 @@
 }
 
 .container {
-  background-image: url("../Images/WelcomeImage.jpeg");
-  background-size: cover;
+  /* background-image: url("../Images/WelcomeImage.jpeg"); */
+  /* background-size: cover; */
   /* width: 100%; */
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   font-family: roboto;
+  background-color: #7246f6;
+}
+
+.image {
+  z-index: 1;
+  width: 35%;
+}
+
+.image img {
+  margin-left: 70px;
+  width: 60vh;
+  height: 60vh;
+  margin-bottom: 50px;
+  animation: slide 0.5s ease-in-out forwards;
+}
+
+.image h2 {
+  margin-left: 70px;
+  width: 65%;
+  color: beige;
+  margin-top: 0;
+  font-size: 27px;
+  font-family: "Syne", sans-serif;
+  animation: slide 0.5s ease-in-out forwards;
+}
+.studentImage {
+  margin-top: 50px !important;
+  margin-left: 120px !important;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .signContainer {
-  border-radius: 25px;
-  width: 30%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 65%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 30px;
+  /* padding: 30px; */
+  height: 100vh;
 }
 
 .signContainer h1 {
-  margin-top: 10px;
-  font-weight: 500;
+  margin-bottom: 15px;
+  font-weight: 800;
+  font-size: 40px;
+  color: rgb(57, 56, 56);
 }
 .form {
   margin-bottom: 10px;
-  margin-left: 20px;
+  margin-left: 180px;
+  margin-right: 10px;
+  animation: slideReverse 0.5s ease-in-out backwards;
+}
+
+@keyframes slideReverse {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .form select {
   padding: 10px;
-  width: 40%;
+  width: 34%;
   margin-bottom: 10px;
   border: 1px solid #aa93f3;
 }
 
-.dept {
-  margin-left: 50px;
+.dept,
+.deptError,
+.year,
+.yearError {
+  margin-left: 40px;
 }
 
 .form input,
 .form select {
   color: #7d7c7a;
   /* margin-bottom: 25px; */
-  margin-top: 20px;
-  border: 1px solid #6750a4;
-  background-color: #f7f2fa;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  padding: 10px;
-  border-radius: 3px;
+  margin-top: 25px;
+  border: 2px solid rgb(195, 195, 195);
+  /* background-color: #f7f2fa; */
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.form input::placeholder,
+.form select::placeholder {
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.form select {
+  cursor: pointer;
+  appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: 1px solid #ad9dd9;
+  border: none;
+  box-shadow: 0 0 10px #6750a4;
 }
 
 .form input {
-  width: 90%;
+  width: 60vh;
 }
 
-.SignUpButton,
-.modal button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.SignUpButton {
   margin-top: 20px;
 }
-.SignUpButton button,
-.modal button {
+.SignUpButton button {
   font-size: 13px;
-  border-radius: 20px;
+  border-radius: 5px;
   font-weight: 600;
-  width: 95%;
+  width: 73%;
   padding: 10px;
-  background-color: #6750a4;
+  background-color: #7246f6;
   outline: none;
   border: 0;
   text-decoration: none;
@@ -86,7 +156,7 @@
   cursor: pointer;
 }
 .SignUpButton button:disabled {
-  background-color: #9987ca;
+  background-color: #906ef4;
   cursor: not-allowed;
 }
 
@@ -98,34 +168,37 @@
 .otp {
   display: flex;
   align-items: center;
+  margin-top: -4px;
   /* justify-content: center; */
 }
 .mail input,
 .otp input {
-  width: 55%;
+  width: 48%;
 }
-.mail h2,
-.otp p {
-  background-color: #f7f2fa;
+.after,
+.before {
+  background-color: #7246f6;
   outline: none;
-  border-bottom: 1px solid #6750a4;
-  color: #7d7c7a;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  color: white;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 5px;
   margin-left: 10px;
-  height: 34px;
+  height: 39px;
   padding: 2px;
-  width: 30%;
+  width: 20%;
   font-size: 15px;
+  font-weight: bold;
   align-items: center;
   justify-content: center;
   display: flex;
   /* margin-top: 20px; */
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: 0;
+  margin-top: 25px;
+}
+
+.after {
+  background-color: rgb(4, 128, 4);
 }
 
 .error {
@@ -134,22 +207,73 @@
   color: red;
   font-size: 12px;
 }
-.modal {
-  font-family: roboto;
+
+.loadingOtp {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  flex-direction: column;
-  padding: 100px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  gap: 0.25rem;
 }
 
-.modal button {
-  cursor: pointer;
-  padding: 15px;
+.loadingOtp > div {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: white;
+  border-radius: 50%;
+  animation: 1.2s infinite ease-in-out scaleUp;
+}
+
+.loadingOtp div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loadingOtp div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes scaleUp {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.fullnameError,
+.empIdError,
+.genderError,
+.emailError,
+.passwordError,
+.mobilenoError,
+.deptError,
+.optError,
+.rollnoError,
+.yearError {
+  border: 2px solid rgb(245, 109, 109) !important;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  box-shadow: 0 0 3px red;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

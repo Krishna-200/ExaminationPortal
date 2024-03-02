@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "./UserContext";
 import Modal from "react-modal";
+import studentImage from "../Images/StudentImage.png";
 
 const SignUp = () => {
   const [fullname, setFullname] = useState("");
@@ -17,19 +18,16 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [otpVisible, setOtpVisible] = useState(false);
   const [otp, setOtp] = useState("");
-  const [fullnameError, setFullnameError] = useState("");
-  const [rollnoError, setRollnoError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [genderError, setGenderError] = useState("");
-  const [yearError, setYearError] = useState("");
-  const [mailError, setMailError] = useState("");
-  const [mobilenoError, setMobilenoError] = useState("");
+  const [fullnameError, setFullnameError] = useState(false);
+  const [rollnoError, setRollnoError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [genderError, setGenderError] = useState(false);
+  const [yearError, setYearError] = useState(false);
+  const [mailError, setMailError] = useState(false);
+  const [mobilenoError, setMobilenoError] = useState(false);
+  const [otpError, setOtpError] = useState(false);
   const [loadingOtp, setLoadingOtp] = useState(false);
   const [loadingVerify, setLoadingVerify] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-  const [verifyModalMessage, setVerifyModalMessage] = useState("");
-  const [verifyModalIsOpen, setVerifymodalIsOpen] = useState(false);
   const [validOtp, setValidOtp] = useState(false);
 
   const handleOtpClick = async () => {
@@ -41,7 +39,7 @@ const SignUp = () => {
         !mail ||
         !mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
       ) {
-        setMailError("Enter a valid email address");
+        setMailError(true);
         isValid = false;
       } else {
         setLoadingOtp(true);
@@ -55,8 +53,6 @@ const SignUp = () => {
           setOtpVisible(!otpVisible);
         }
         // console.log(res);
-        setModalMessage("Email has been sent successfully.");
-        setModalIsOpen(true);
       }
     } catch (error) {
       console.log(error);
@@ -67,22 +63,21 @@ const SignUp = () => {
 
   const handleOtpVerify = async () => {
     setLoadingVerify(true);
+    setOtpError(false);
+
     try {
       const res = await axios.post("/verifyOtp", {
         mail,
         otp,
       });
       // console.log(res.data.valid);
+      if (!res.data.valid) {
+        setOtpError(true);
+      }
       setLoadingVerify(false);
-      setVerifymodalIsOpen(true);
       // console.log("res data " + res.data.valid);
       setValidOtp(res.data.valid);
       // console.log("set data " + validOtp);
-      if (res.data.valid) {
-        setVerifyModalMessage("otp verification successful");
-      } else {
-        setVerifyModalMessage("otp verification failed");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -90,44 +85,44 @@ const SignUp = () => {
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
-      setFullnameError("");
-      setRollnoError("");
-      setPasswordError("");
-      setGenderError("");
-      setYearError("");
-      setMailError("");
-      setMobilenoError("");
+      setFullnameError(false);
+      setRollnoError(false);
+      setPasswordError(false);
+      setGenderError(false);
+      setYearError(false);
+      setMailError(false);
+      setMobilenoError(false);
 
       let isValid = true;
       if (!fullname) {
-        setFullnameError("Please enter your full name");
+        setFullnameError(true);
         isValid = false;
       }
       if (!rollno) {
-        setRollnoError("Roll number is required");
+        setRollnoError(true);
         isValid = false;
       }
       if (!password || password.length < 8) {
-        setPasswordError("Password must be 8 characters long");
+        setPasswordError(true);
         isValid = false;
       }
       if (!gender) {
-        setGenderError("Please select your gender");
+        setGenderError(true);
         isValid = false;
       }
       if (!year) {
-        setYearError("Please select your year");
+        setYearError(true);
         isValid = false;
       }
       if (
         !mail ||
         !mail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
       ) {
-        setMailError("eMail is required");
+        setMailError(true);
         isValid = false;
       }
       if (!mobileno) {
-        setMobilenoError("Mobile number is required");
+        setMobilenoError(true);
         isValid = false;
       }
 
@@ -159,28 +154,33 @@ const SignUp = () => {
 
   return (
     <div className={css.container}>
+      <div className={css.image}>
+        <h2>Elevate your online exam experience. Sign Up now!</h2>
+        <img className={css.studentImage} src={studentImage} alt="" />
+      </div>
       <div className={css.signContainer}>
-        <h1>User Sign Up</h1>
         <div className={css.form}>
+          <h1>User Sign Up</h1>
           <form action="" onSubmit={handleSubmit}>
             <input
+              className={fullnameError ? css.fullnameError : css.fullname}
               type="text"
               placeholder="Full Name"
               value={fullname}
               onChange={(ev) => setFullname(ev.target.value)}
             />
-            {fullnameError && <p className={css.error}>{fullnameError}</p>}
 
             <input
+              className={rollnoError ? css.rollnoError : css.rollno}
               type="text"
               placeholder="Roll Number"
               value={rollno}
               onChange={(ev) => setRollno(ev.target.value)}
             />
-            {rollnoError && <p className={css.error}>{rollnoError}</p>}
 
             <div className={css.selectElements}>
               <select
+                className={genderError ? css.genderError : css.gender}
                 name="Gender"
                 value={gender}
                 onChange={(ev) => setGender(ev.target.value)}
@@ -190,7 +190,7 @@ const SignUp = () => {
                 <option value="female">Female</option>
               </select>
               <select
-                className={css.dept}
+                className={yearError ? css.yearError : css.year}
                 name="Year"
                 value={year}
                 onChange={(ev) => setYear(ev.target.value)}
@@ -202,85 +202,89 @@ const SignUp = () => {
                 <option value="fourth">Fourth</option>
               </select>
             </div>
-            {genderError && <p className={css.error}>{genderError}</p>}
-            {yearError && <p className={css.error}>{yearError}</p>}
 
             <div className={css.mail}>
               <input
+                className={mailError ? css.emailError : css.email}
                 type="email"
                 placeholder="Enter college Mail ID"
                 value={mail}
                 onChange={(ev) => setMail(ev.target.value)}
               />
-              {mailError && <p className={css.error}>{mailError}</p>}
 
-              <h2 onClick={handleOtpClick}>
-                {loadingOtp ? "Sending OTP..." : "Send OTP"}
+              <h2
+                onClick={handleOtpClick}
+                className={otpVisible ? css.after : css.before}
+              >
+                {loadingOtp ? (
+                  <div className={css.loadingOtp}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                ) : otpVisible ? (
+                  "OTP Sent"
+                ) : (
+                  "Send OTP"
+                )}
               </h2>
             </div>
             {otpVisible && (
               <div className={css.otp}>
                 <input
+                  className={otpError ? css.optError : css.ValidOtp}
                   type="text"
                   placeholder="Enter otp"
                   value={otp}
                   onChange={(ev) => setOtp(ev.target.value)}
                 />
-                <p onClick={handleOtpVerify}>
-                  {loadingVerify ? "Verifying OTP..." : "verify OTP"}
+                <p
+                  onClick={handleOtpVerify}
+                  className={!validOtp ? css.before : css.after}
+                >
+                  {loadingVerify ? (
+                    <div className={css.loadingOtp}>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  ) : !validOtp ? (
+                    "Verify OTP"
+                  ) : (
+                    "Success"
+                  )}
                 </p>
               </div>
             )}
 
             <input
+              className={passwordError ? css.passwordError : css.password}
               type="password"
               placeholder="Password"
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
             />
-            {passwordError && <p className={css.error}>{passwordError}</p>}
 
             <input
+              className={mobilenoError ? css.mobilenoError : css.mobileno}
               type="number"
               placeholder="Mobile No."
               value={mobileno}
               onChange={(ev) => setMobileno(ev.target.value)}
             />
-            {mobilenoError && <p className={css.error}>{mobilenoError}</p>}
 
             <div className={css.SignUpButton}>
               <button disabled={!validOtp}>Sign Up</button>
             </div>
+            <h3>
+              Already have an account?{" "}
+              <Link style={{ textDecoration: "none" }} to="/login">
+                Sign In
+              </Link>
+            </h3>
           </form>
-          <div>
-            <Modal
-              appElement={document.getElementById("root")}
-              isOpen={modalIsOpen}
-              onRequestClose={() => setModalIsOpen(false)}
-              contentLabel="Email Status"
-              className={css.modal}
-            >
-              <h2>{modalMessage}</h2>
-              <button onClick={() => setModalIsOpen(false)}>Close</button>
-            </Modal>
-            <Modal
-              appElement={document.getElementById("root")}
-              isOpen={verifyModalIsOpen}
-              onRequestClose={() => setVerifymodalIsOpen(false)}
-              contentLabel="Email Status"
-              className={css.modal}
-            >
-              <h2>{verifyModalMessage}</h2>
-              <button onClick={() => setVerifymodalIsOpen(false)}>Close</button>
-            </Modal>
-          </div>
+          <div></div>
         </div>
-        <h3>
-          Already have an account?{" "}
-          <Link style={{ textDecoration: "none" }} to="/login">
-            Sign In
-          </Link>
-        </h3>
       </div>
     </div>
   );
