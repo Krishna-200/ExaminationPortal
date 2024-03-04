@@ -79,7 +79,8 @@
   /* border: 2px solid red; */
   width: 80vh;
   text-transform: capitalize;
-  font-size: 38px;
+  font-size: 4vh;
+  /* font-size: 38px; */
   animation: 0.6s ease-in-out textSlide;
 }
 
@@ -285,6 +286,27 @@
   align-items: center;
   justify-content: center;
 }
+
+.one:hover p,
+.two:hover p,
+.three:hover p,
+.four:hover p {
+  box-shadow: inset 0 0 0 8px #eb3072;
+  background-color: black;
+  animation: 0.3s ease-in workflow;
+}
+
+@keyframes workflow {
+  0% {
+    box-shadow: inset 0 0 0 8px #090909;
+    background-color: #eb3072;
+  }
+  100% {
+    box-shadow: inset 0 0 0 8px #eb3072;
+    background-color: black;
+  }
+}
+
 .workComponents h3 {
   text-align: center;
   font-size: 23px;
@@ -384,13 +406,27 @@
   margin: 100px;
 }
 
-.components img {
-  width: 600px;
-  height: 400px;
+.imgComponent {
+  width: 300px;
+  height: 350px;
+  overflow: hidden;
   border-radius: 20px;
+}
+
+.components img {
+  width: 100%;
+  height: 100%;
   -webkit-box-shadow: -2px 0px 18px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -2px 0px 18px -6px rgba(0, 0, 0, 0.75);
   box-shadow: -2px 0px 18px -6px rgba(0, 0, 0, 0.75);
+  transform: scale(1.1);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.components img:hover {
+  transform: scale(1);
 }
 
 .teacherComponent,
@@ -486,13 +522,13 @@
 }
 
 .info table {
-  border: 2px solid grey;
+  border: 1px solid grey;
   border-bottom: 0px;
   border-radius: 10px;
 }
 
 .info td {
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid grey;
   /* border-radius: 20px; */
   padding: 1px 20px;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import css from "../styles/LandingPage.module.css";
 import SVG from "../Images/LandingPage.png";
 import { FiCheckCircle } from "react-icons/fi";
@@ -27,8 +27,10 @@ import { Link } from "react-router-dom";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
   const [aboutTextHidden, setAboutTextHidden] = useState(false);
@@ -54,14 +56,14 @@ const LandingPage = () => {
 
     let mainTimeline = gsap.timeline({
       repeat: -1,
-      delay: 2,
+      delay: 1,
     });
 
     words.forEach((word) => {
       let testTimeline = gsap.timeline({
         repeat: 1,
         yoyo: true,
-        repeatDelay: 6,
+        repeatDelay: 4,
       });
       testTimeline.to("#typewriter", {
         text: word,
@@ -74,6 +76,34 @@ const LandingPage = () => {
   useEffect(() => {
     gsapAnimation();
   });
+
+  const ref = useRef([]);
+  ref.current = [];
+
+  useEffect(() => {
+    ref.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+          left: 0,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom-=100",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+  }, []);
+
+  const addtoRefs = (el) => {
+    if (el && !ref.current.includes(el)) {
+      ref.current.push(el);
+    }
+  };
 
   return (
     <ReactLenis root>
@@ -150,12 +180,12 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={css.aboutUs} id="section-2">
-          <h1>About Us</h1>
+          <h1 ref={addtoRefs}>About Us</h1>
           <div className={css.aboutContent}>
-            <div className={css.aboutSVG}>
+            <div ref={addtoRefs} className={css.aboutSVG}>
               <img src={AboutSVG} alt="" />
             </div>
-            <div className={css.aboutText}>
+            <div ref={addtoRefs} className={css.aboutText}>
               <h2>A FEW WORDS ABOUT US</h2>
               <p>
                 The Online Examination System is the perfect solution for
@@ -189,8 +219,8 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={css.workflow}>
-          <h1>Our Portal WorkFlow</h1>
-          <div className={css.workComponents}>
+          <h1 ref={addtoRefs}>Our Portal WorkFlow</h1>
+          <div ref={addtoRefs} className={css.workComponents}>
             <div className={css.one}>
               <span>
                 <p>1</p>
@@ -207,7 +237,7 @@ const LandingPage = () => {
               <span>
                 <p>2</p>
               </span>
-              <h3>Assing Exam to Students</h3>
+              <h3>Assign Exam to Students</h3>
               <h4>
                 Teachers assign the created exam to specific students or
                 classes.
@@ -217,7 +247,7 @@ const LandingPage = () => {
               <span>
                 <p>3</p>
               </span>
-              <h3>Studets Access Exam</h3>
+              <h3>Students Access Exam</h3>
               <h4>
                 Students log in and take the assigned exam within the specified
                 time frame.
@@ -234,8 +264,10 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={css.components}>
-          <div className={css.teacherComponent}>
-            <img src={teacher} alt="" />
+          <div ref={addtoRefs} className={css.teacherComponent}>
+            <div className={css.imgComponent}>
+              <img src={teacher} alt="" />
+            </div>
             <div>
               <h3>For Teachers</h3>
               <p>
@@ -245,7 +277,7 @@ const LandingPage = () => {
               <a href="/AdminSignUp">Get Started As Teacher</a>
             </div>
           </div>
-          <div className={css.studentComponent}>
+          <div ref={addtoRefs} className={css.studentComponent}>
             <div>
               <h3>For Students</h3>
               <p>
@@ -255,47 +287,49 @@ const LandingPage = () => {
               </p>
               <a href="/SignUp">Get Started As Student</a>
             </div>
-            <img src={student} alt="" />
+            <div className={css.imgComponent}>
+              <img src={student} alt="" />
+            </div>
           </div>
         </div>
         <div className={css.benefits}>
-          <h1>Benefits</h1>
-          <p>
-            online examination systems offer a wide range of features and
+          <h1 ref={addtoRefs}>Benefits</h1>
+          <p ref={addtoRefs}>
+            Online examination systems offer a wide range of features and
             benefits that contribute to the efficiency, security, and
             accessibility of the exam process for educational institutions and
             examinees alike.
           </p>
           <div className={css.benefitComponent}>
-            <div className={css.Convenience}>
-              <h2>Conveniece</h2>
+            <div ref={addtoRefs} className={css.Convenience}>
+              <h2>Convenience</h2>
               <h6>
                 Eliminate the need for physical exam centers. Allow students to
                 take exams remotely at their convenience.
               </h6>
             </div>
-            <div className={css.cost}>
+            <div ref={addtoRefs} className={css.cost}>
               <h2>Cost-effective</h2>
               <h6>
                 Reduce administrative costs associated with traditional exam
                 processes. Minimize paper and printing expenses.
               </h6>
             </div>
-            <div className={css.time}>
+            <div ref={addtoRefs} className={css.time}>
               <h2>Time Saving</h2>
               <h6>
                 Streamline exam creation, administration, and grading processes.
-                Save instructors' and administrators' time for other tasks.
+                Save instructors and administrators time for other tasks.
               </h6>
             </div>
-            <div className={css.efficiency}>
+            <div ref={addtoRefs} className={css.efficiency}>
               <h2>Improved Efficiency</h2>
               <h6>
                 Automate grading and result generation processes. Enable faster
                 feedback to students.
               </h6>
             </div>
-            <div className={css.test}>
+            <div ref={addtoRefs} className={css.test}>
               <h2>Test Anywhere</h2>
               <h6>
                 Creation of tests made easy for teachers. Students can take
@@ -308,7 +342,7 @@ const LandingPage = () => {
           <div className={css.info}>
             <table>
               <tbody>
-                <tr>
+                <tr ref={addtoRefs}>
                   <td>
                     <FaLocationDot />
                     <span>
@@ -317,7 +351,7 @@ const LandingPage = () => {
                     </span>
                   </td>
                 </tr>
-                <tr>
+                <tr ref={addtoRefs}>
                   <td>
                     <FaMailBulk />
                     <span>
@@ -326,7 +360,7 @@ const LandingPage = () => {
                     </span>
                   </td>
                 </tr>
-                <tr>
+                <tr ref={addtoRefs}>
                   <td>
                     <FaPhoneVolume />
                     <span>
@@ -335,7 +369,7 @@ const LandingPage = () => {
                     </span>
                   </td>
                 </tr>
-                <tr>
+                <tr ref={addtoRefs}>
                   <td className={css.follow}>
                     <h3>Follow Us On</h3>
                     <div>
@@ -349,32 +383,37 @@ const LandingPage = () => {
             </table>
           </div>
           <div className={css.contact}>
-            <h2>Contact With Us</h2>
-            <p>
+            <h2 ref={addtoRefs}>Contact With Us</h2>
+            <p ref={addtoRefs}>
               If you have any queries or encounter any bugs, please feel free to
               inform us. Your feedback is valuable and helps us improve our
               services.
             </p>
             <form action="" className={css.contactForm}>
-              <input type="text" placeholder="Full Name*" />
+              <input type="text" placeholder="Full Name*" ref={addtoRefs} />
               <div>
-                <input type="email" placeholder="Email*" />
-                <input type="number" placeholder="Phone Number*" />
+                <input type="email" placeholder="Email*" ref={addtoRefs} />
+                <input
+                  type="number"
+                  placeholder="Phone Number*"
+                  ref={addtoRefs}
+                />
               </div>
               <textarea
+                ref={addtoRefs}
                 name=""
                 id=""
                 cols="73"
                 rows="8"
                 placeholder="Message*"
               ></textarea>
-              <button>Send Message</button>
+              <button ref={addtoRefs}>Send Message</button>
             </form>
           </div>
         </div>
-        <div className={css.footer}>
+        <div ref={addtoRefs} className={css.footer}>
           <div className={css.footerName}>
-            <h2>Eamify</h2>
+            <h2>Examify</h2>
             <p>
               Our Online Examination System provides a user-friendly solution
               for students and teachers, offering convenient test-taking and
@@ -400,11 +439,11 @@ const LandingPage = () => {
             <h3>Contact</h3>
             <div>
               <FaLocationDot />
-              <p>Suramplaem</p>
+              <p>Surampalem</p>
             </div>
             <div>
               <FaMailBulk />
-              <p>examinationprotal@hotmail.com</p>
+              <p>examinationportal@hotmail.com</p>
             </div>
             <div>
               <FaPhoneVolume />
