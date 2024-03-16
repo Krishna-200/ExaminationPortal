@@ -84,8 +84,9 @@ const LandingPage = () => {
     ref.current.forEach((el) => {
       gsap.fromTo(
         el,
-        { autoAlpha: 0 },
+        { x: -50, autoAlpha: 0 },
         {
+          x: 0,
           autoAlpha: 1,
           left: 0,
           duration: 0.5,

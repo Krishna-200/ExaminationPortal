@@ -12,6 +12,7 @@
   height: 7vh;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .sticy {
@@ -474,7 +475,7 @@
 }
 
 .studentComponent a {
-  background-color: #7246f6;
+  background-color: #3f17b6;
 }
 
 .benefits {

@@ -47,7 +47,7 @@ const InstructionPage = () => {
 
   setTimeout(() => {
     camData();
-  }, 2000);
+  }, 8000);
 
   return (
     <div className={css.container}>

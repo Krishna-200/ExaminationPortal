@@ -29,6 +29,7 @@ const SignUp = () => {
   const [loadingOtp, setLoadingOtp] = useState(false);
   const [loadingVerify, setLoadingVerify] = useState(false);
   const [validOtp, setValidOtp] = useState(false);
+  const [file, setFile] = useState("");
 
   const handleOtpClick = async () => {
     try {
@@ -130,15 +131,20 @@ const SignUp = () => {
         return;
       }
 
-      const response = await axios.post("/SignUp", {
-        fullname,
-        rollno,
-        password,
-        gender,
-        year,
-        mail,
-        mobileno,
-      });
+      const formData = new FormData();
+      console.log(file);
+      formData.append("fullname", fullname);
+      formData.append("rollno", rollno);
+      formData.append("password", password);
+      formData.append("gender", gender);
+      formData.append("year", year);
+      formData.append("mail", mail);
+      formData.append("mobileno", mobileno);
+      formData.append("file", file);
+
+      const response = await axios.post("/SignUp", formData);
+      // console.log(response);
+
       setSignedInFullname(fullname);
       setId(response.id);
       const userId = response.data.id;
@@ -273,11 +279,13 @@ const SignUp = () => {
               onChange={(ev) => setMobileno(ev.target.value)}
             />
 
+            <input type="file" onChange={(ev) => setFile(ev.target.files[0])} />
+
             <div className={css.SignUpButton}>
               <button disabled={!validOtp}>Sign Up</button>
             </div>
             <h3>
-              Already have an account?{" "}
+              Already have an account?
               <Link style={{ textDecoration: "none" }} to="/login">
                 Sign In
               </Link>
