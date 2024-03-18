@@ -97,7 +97,12 @@ const Userpage = () => {
         </div>
         <div className={css.profile}>
           <div className={css.avatar}>
-            <img src={`http://localhost:3000/images/` + file} alt="" />
+            <img
+              src={
+                `https://examniationportal-backend.onrender.com//images/` + file
+              }
+              alt="User Profile Image"
+            />
             <h2>{fullname}</h2>
           </div>
           <div className={css.line}> </div>
