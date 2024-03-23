@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { MdFactCheck, MdOutlineBugReport } from "react-icons/md";
 import { IoIosPaper, IoMdContact } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
+import { RxAvatar } from "react-icons/rx";
 
 const UserNavbar = () => {
   const param = useParams().id;
@@ -18,7 +19,6 @@ const UserNavbar = () => {
     try {
       const { data } = await axios.get("/UserPage/" + param);
       setFullname(data.fullname);
-      setFile(data.file);
       // console.log(data);
     } catch (error) {
       if (error) throw error;
@@ -37,10 +37,7 @@ const UserNavbar = () => {
     <div className={css.sideNavbar}>
       <h2>Examify</h2>
       <div className={css.navbarProfile}>
-        <img
-          src={`https://examniationportal-backend.onrender.com/images/` + file}
-          alt="User Profile Image"
-        />
+        <RxAvatar />
         <h2>{fullname}</h2>
       </div>
       <div className={css.navbarMenu}>

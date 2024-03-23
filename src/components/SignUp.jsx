@@ -29,7 +29,6 @@ const SignUp = () => {
   const [loadingOtp, setLoadingOtp] = useState(false);
   const [loadingVerify, setLoadingVerify] = useState(false);
   const [validOtp, setValidOtp] = useState(false);
-  const [file, setFile] = useState("");
 
   const handleOtpClick = async () => {
     try {
@@ -131,22 +130,20 @@ const SignUp = () => {
         return;
       }
 
-      const formData = new FormData();
-      console.log(file);
-      formData.append("fullname", fullname);
-      formData.append("rollno", rollno);
-      formData.append("password", password);
-      formData.append("gender", gender);
-      formData.append("year", year);
-      formData.append("mail", mail);
-      formData.append("mobileno", mobileno);
-      formData.append("file", file);
-
-      const response = await axios.post("/SignUp", {
-        method: "post",
-        body: formData,
-      });
-      // console.log(response);
+      try {
+        const response = await axios.post("/SignUp", {
+          fullname,
+          rollno,
+          password,
+          gender,
+          year,
+          mail,
+          mobileno,
+        });
+        // console.log(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
 
       setSignedInFullname(fullname);
       setId(response.id);
@@ -281,8 +278,6 @@ const SignUp = () => {
               value={mobileno}
               onChange={(ev) => setMobileno(ev.target.value)}
             />
-
-            <input type="file" onChange={(ev) => setFile(ev.target.files[0])} />
 
             <div className={css.SignUpButton}>
               <button disabled={!validOtp}>Sign Up</button>

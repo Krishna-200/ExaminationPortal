@@ -10,6 +10,7 @@ import { IoSchoolSharp } from "react-icons/io5";
 import { FcDepartment } from "react-icons/fc";
 import { FaSchool } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
+import { RxAvatar } from "react-icons/rx";
 
 const Userpage = () => {
   const param = useParams().id;
@@ -25,7 +26,6 @@ const Userpage = () => {
       const { data } = await axios.get("/UserPage/" + param);
       setFullname(data.fullname);
       setMail(data.mail);
-      setFile(data.file);
       setYear(data.year);
       console.log(data);
     } catch (error) {
@@ -97,12 +97,7 @@ const Userpage = () => {
         </div>
         <div className={css.profile}>
           <div className={css.avatar}>
-            <img
-              src={
-                `https://examniationportal-backend.onrender.com/images/` + file
-              }
-              alt="User Profile Image"
-            />
+            <RxAvatar />
             <h2>{fullname}</h2>
           </div>
           <div className={css.line}> </div>

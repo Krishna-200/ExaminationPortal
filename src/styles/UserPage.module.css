@@ -84,6 +84,12 @@
   margin-top: 20px;
 }
 
+.navbarProfile :nth-child(1) {
+  width: 100px;
+  height: 100px;
+  color: white;
+}
+
 .navbarProfile h2 {
   color: white;
 }
@@ -191,6 +197,11 @@
 .avatar img {
   width: 150px;
   border-radius: 50%;
+  height: 150px;
+}
+
+.avatar :nth-child(1) {
+  width: 150px;
   height: 150px;
 }
 
