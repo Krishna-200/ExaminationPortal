@@ -130,20 +130,16 @@ const SignUp = () => {
         return;
       }
 
-      try {
-        const response = await axios.post("/SignUp", {
-          fullname,
-          rollno,
-          password,
-          gender,
-          year,
-          mail,
-          mobileno,
-        });
-        // console.log(response.data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      const response = await axios.post("/SignUp", {
+        fullname,
+        rollno,
+        password,
+        gender,
+        year,
+        mail,
+        mobileno,
+      });
+      // console.log(response.data);
 
       setSignedInFullname(fullname);
       setId(response.id);
