@@ -99,7 +99,7 @@ const Userpage = () => {
           <div className={css.avatar}>
             <img
               src={
-                `https://examniationportal-backend.onrender.com//images/` + file
+                `https://examniationportal-backend.onrender.com/images/` + file
               }
               alt="User Profile Image"
             />

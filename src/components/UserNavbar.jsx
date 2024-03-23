@@ -37,7 +37,10 @@ const UserNavbar = () => {
     <div className={css.sideNavbar}>
       <h2>Examify</h2>
       <div className={css.navbarProfile}>
-        <img src={`http://localhost:3000/images/` + file} alt="" />
+        <img
+          src={`https://examniationportal-backend.onrender.com/images/` + file}
+          alt="User Profile Image"
+        />
         <h2>{fullname}</h2>
       </div>
       <div className={css.navbarMenu}>
