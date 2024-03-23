@@ -142,7 +142,10 @@ const SignUp = () => {
       formData.append("mobileno", mobileno);
       formData.append("file", file);
 
-      const response = await axios.post("/SignUp", formData);
+      const response = await axios.post("/SignUp", {
+        method: "post",
+        body: formData,
+      });
       // console.log(response);
 
       setSignedInFullname(fullname);
