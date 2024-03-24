@@ -10,7 +10,7 @@ import { IoSchoolSharp } from "react-icons/io5";
 import { FcDepartment } from "react-icons/fc";
 import { FaSchool } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
-import { RxAvatar } from "react-icons/rx";
+import avatar from "/profile.png";
 
 const Userpage = () => {
   const param = useParams().id;
@@ -27,7 +27,7 @@ const Userpage = () => {
       setFullname(data.fullname);
       setMail(data.mail);
       setYear(data.year);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       if (error) throw error;
     }
@@ -97,7 +97,10 @@ const Userpage = () => {
         </div>
         <div className={css.profile}>
           <div className={css.avatar}>
-            <RxAvatar />
+            <label htmlFor="file-upload">
+              <img src={avatar} alt="" />
+            </label>
+            <input type="file" id="file-upload" label="Image" />
             <h2>{fullname}</h2>
           </div>
           <div className={css.line}> </div>
