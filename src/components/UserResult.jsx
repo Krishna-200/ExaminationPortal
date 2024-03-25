@@ -16,39 +16,42 @@ const UserResult = () => {
   }, [param]);
   return (
     <div className={css.container}>
-      <UserNavbar />
-      <div className={css.detailsHeader}>
-        <h2>My Results</h2>
-      </div>
-
-      <div className={css.details}>
-        <div className={css.detailContainer}>
-          <div className={css.studentMenu}>
-            <ul>
-              <li>Name</li>
-              <li>Subject</li>
-              <li>Date</li>
-              <li>Marks</li>
-              <li>Exam Type</li>
-              <li>Status</li>
-            </ul>
-            <hr />
+      <div className={css.homeContainer}>
+        <UserNavbar />
+        <div>
+          <div className={css.detailsHeader}>
+            <h2>My Results</h2>
           </div>
-          <div>
-            <ul className={css.studentData}>
-              {results.map((result) => (
-                <li key={result.id}>
-                  <p>{result.name}</p>
-                  <p>{result.subject}</p>
-                  <p>{result.date.slice(0, 10)}</p>
-                  <p>{result.totalMarks}</p>
-                  <p>{result.examType}</p>
-                  <p className={result.stauts == "true" ? css.pass : css.fail}>
-                    {result.stauts == "true" ? "Pass" : "Fail"}
-                  </p>
-                </li>
-              ))}
-            </ul>
+
+          <div className={css.details}>
+            <table className={css.studentMenu}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Marks</th>
+                  <th>Exam Type</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((result) => (
+                  <tr key={result.id}>
+                    <td>{result.name}</td>
+                    <td>{result.subject}</td>
+                    <td>{new Date(result.date).toLocaleDateString("en-GB")}</td>
+                    <td>{result.totalMarks}</td>
+                    <td>{result.examType}</td>
+                    <td
+                      className={result.stauts === "true" ? css.pass : css.fail}
+                    >
+                      {result.stauts === "true" ? <p>pass</p> : <p>fail</p>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

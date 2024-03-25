@@ -1,142 +1,87 @@
 .container {
-  background-image: url("../Images/WelcomeImage.jpeg");
   background-size: cover;
   height: 100vh;
   font-family: roboto;
+  background-color: #ebebee;
 }
-.navbar {
+
+.sideNavbar {
+  background-color: #22284a;
+  height: 90vh;
   display: flex;
-  flex-direction: row;
-  justify-content: end;
-  padding: 15px;
-  background-color: rgba(255, 255, 255, 0.47);
+  flex-direction: column;
+  width: 25vh;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 30px;
 }
-.navbar ul {
-  display: flex;
-  list-style: none;
-}
-
-.navbar ul li {
-  margin-right: 60px;
-  cursor: pointer;
-}
-.navList {
-  font-weight: 600;
-}
-.navList :hover {
-  color: #7a52f4;
-}
-
-.navbar button {
-  margin-right: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 0;
-  cursor: pointer;
-  background-color: #7a52f4;
-  color: white;
-  font-weight: 600;
-  border-radius: 15px;
-}
-
-.homeContaier {
-  width: 40%;
-  /* border: 2px solid black; */
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 44px;
-}
-.homeText h2 {
-  font-weight: 600;
-  margin: 0;
-}
-.homeText h3 {
-  font-weight: 500;
-  margin: 0;
-}
-
-.homeText h4 {
-  font-size: 20px;
-  margin: 0;
+.sideNavbar h2 {
   margin-top: 10px;
-  color: #444;
+  color: white;
+  text-align: center;
+}
+
+.homeContainer {
+  display: flex;
+  margin-left: 300px;
 }
 
 .detailsHeader {
   display: flex;
   justify-content: space-between;
   margin: 20px;
-  color: white;
-}
-.detailsHeader button {
-  background-color: #7a52f4;
-  border: 0;
-  width: 50px;
-  height: 30px;
-  color: white;
-  border-radius: 10px;
-  font-weight: 500;
+  color: #7a52f4;
 }
 
 .details {
-  /* border: 2px solid red; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: space-around; */
-  margin-left: 200px;
-  margin-right: 200px;
-  background-color: white;
-  padding: 50px;
-  border-radius: 25px;
-}
-.detail {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.detailContainer {
-  border-radius: 25px;
-  padding: 50px;
-  padding-left: 0;
-  /* padding-right: 100px; */
-  /* border: 2px solid red; */
-  background-color: #f2f7fa;
-}
-.detail h2 {
-  font-size: 20px;
-  font-weight: normal;
-  margin-left: 30px;
-}
-.detail :first-child {
-  color: #7a52f4;
+  margin: 20px;
+  width: 100vh;
 }
 
-.studentMenu ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.studentMenu {
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.details table,
+.details th,
+.details td {
+  border: 2px solid rgb(113, 113, 113);
+  border-collapse: collapse;
+}
+
+.details table {
+  border: none;
+}
+
+.details th {
+  border-top: none;
+  border-left: none;
+}
+
+.details td {
+  border-left: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+.studentMenu th {
   list-style: none;
   color: #7a52f4;
-  margin-left: 10px;
+  font-weight: bold;
+  padding: 10px;
 }
 
-.studentMenu ul li {
-  /* border: 2px solid red; */
-  display: flex;
-  justify-content: space-between;
+.studentMenu td {
+  padding: 20px;
 }
 
-.studentMenu hr {
-  border: 1px solid #7a52f4;
-  margin-left: 40px;
+.studentMenu :nth-child(6) {
+  border-right: none;
 }
 
-.studentData li {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
+.studentMenu :nth-child(4) {
+  text-align: center;
 }
 
 .testHeading {
@@ -266,15 +211,12 @@
 }
 
 .questions::-webkit-scrollbar-track {
-  /* border-radius: 8px; */
   border-top-right-radius: 20px;
   background: #eee8f4;
   border-bottom-right-radius: 20px;
 }
 
 .questions::-webkit-scrollbar-thumb {
-  /* border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px; */
   border-radius: 20px;
   background: #a5a4a5;
 }
@@ -340,10 +282,9 @@
 }
 
 .exams {
+  width: 100vh;
   display: flex;
-  /* align-items: center;  */
   justify-content: space-evenly;
-  /* border: 2px solid red; */
 }
 
 .scheduledExam,
@@ -359,7 +300,7 @@
 .scheduledExam::-webkit-scrollbar,
 .practiceExam::-webkit-scrollbar,
 .doneExam::-webkit-scrollbar {
-  width: 1px;
+  display: none;
 }
 
 .scheduledExam {
@@ -510,14 +451,23 @@
 
 .pass,
 .fail {
-  padding: 10px;
   color: white;
   font-weight: bold;
-  border-radius: 10px;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 2px !important;
 }
-.pass {
+
+.pass p,
+.fail p {
+  margin: 0 10px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.pass p {
+  /* width: 100%; */
   background-color: green;
 }
-.fail {
+.fail p {
   background-color: red;
 }

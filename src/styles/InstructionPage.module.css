@@ -1,22 +1,25 @@
 .container {
-  background-image: url("../Images/WelcomeImage.jpeg");
   background-size: cover;
   /* height: 100vh; */
   font-family: roboto;
-  background-repeat: repeat-y;
+}
+.homeContainer {
+  display: flex;
+  margin-left: 300px;
 }
 
 .table {
   padding: 10px;
   border: 2px solid black;
-  width: 100vh;
+  /* width: 100vh; */
+  width: 50%;
 }
 .instruction {
   display: flex;
   flex-direction: column;
   width: 120vh;
   align-items: center;
-  margin-left: 150px;
+  /* margin-left: 150px; */
   margin-top: 30px;
   background-color: white;
   padding: 10px 60px;
@@ -37,4 +40,15 @@
 .instruction button:disabled {
   cursor: not-allowed;
   background-color: rgb(0, 88, 0);
+}
+
+.tableCam {
+  display: flex;
+  /* width: 90vh; */
+  height: 40vh;
+  gap: 1rem;
+}
+
+.cam {
+  width: 50%;
 }

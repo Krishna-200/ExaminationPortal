@@ -8,7 +8,6 @@ const UserAllExams = () => {
   const id = useParams().id;
   const [actualExams, setActualExams] = useState([]);
   const [practiceExams, setPracticeExams] = useState([]);
-  const [doneExams, setDoneExams] = useState([]);
   const navigate = useNavigate();
   const date = new Date();
   // console.log(date);
@@ -16,8 +15,8 @@ const UserAllExams = () => {
   async function getAllExams() {
     const response = await axios.get("/AllExams", { params: { id } });
     const allExams = response.data;
-    const today = new Date();
-    const done = [];
+    const today = new Date().toLocaleDateString("en-GB");
+    console.log(today);
     const actual = [];
     const practice = [];
 
@@ -26,16 +25,13 @@ const UserAllExams = () => {
       if (allExamsType === "practice") {
         practice.push(exam);
       } else {
-        actual.push(exam);
-      }
-      const examDate = new Date(exam.date);
-      if (examDate <= today) {
-        done.push(exam);
+        if (new Date(exam.date).toLocaleDateString("en-GB") >= today) {
+          actual.push(exam);
+        }
       }
     });
     setActualExams(actual);
     setPracticeExams(practice);
-    setDoneExams(done);
   }
 
   useEffect(() => {
@@ -48,116 +44,87 @@ const UserAllExams = () => {
 
   return (
     <div className={css.container}>
-      <UserNavbar />
-      <div className={css.testHeading}>
-        <p>Exams</p>
-      </div>
-      <div className={css.exams}>
-        <div className={css.scheduledExam}>
-          <h2>Actual Exams</h2>{" "}
-          <div>
-            {actualExams.length > 0 ? (
-              <div>
-                {actualExams.map((exam) => (
-                  <div key={exam.id} className={css.actualComponent}>
-                    <h3 className={css.AllExamsSubject}>{exam.subject}</h3>
-                    <h3 className={css.allExamsdate}>
-                      {exam.date.slice(0, 10)}
-                    </h3>
-                    <div className={css.allExamsMarks}>
-                      <h3>{exam.marks} marks</h3>
-                      <h3>{exam.duration} mins</h3>
-                    </div>
-                    <h3 className={css.allExamsYear}>Year: {exam.year}</h3>
-                    <button
-                      onClick={() => handleClickExam(exam)}
-                      className={
-                        new Date(exam.date).toDateString() !==
-                        date.toDateString()
-                          ? css.disabled
-                          : css.startExam
-                      }
-                      disabled={
-                        new Date(exam.date).toDateString() !==
-                        date.toDateString()
-                      }
-                    >
-                      Start Exam
-                    </button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className={css.noExam}>
-                <p>No exams available</p>
-              </div>
-            )}
+      <div className={css.homeContainer}>
+        <UserNavbar />
+        <div>
+          <div className={css.testHeading}>
+            <p>Exams</p>
           </div>
-        </div>
-        <div className={css.practiceExam}>
-          <h2>Practice Exams</h2>
-          <div>
-            {practiceExams.length > 0 ? (
+          <div className={css.exams}>
+            <div className={css.scheduledExam}>
+              <h2>Actual Exams</h2>{" "}
               <div>
-                {practiceExams.map((exam) => (
-                  <div key={exam.id} className={css.practiceComponent}>
-                    <h3 className={css.AllExamsSubject}>{exam.subject}</h3>
-                    <h3 className={css.allExamsdate}>
-                      {exam.date.slice(0, 10)}
-                    </h3>
-                    <div className={css.allExamsMarks}>
-                      <h3>{exam.marks} marks</h3>
-                      <h3>{exam.duration} mins</h3>
-                    </div>
+                {actualExams.length > 0 ? (
+                  <div>
+                    {actualExams.map((exam) => (
+                      <div key={exam.id} className={css.actualComponent}>
+                        <h3 className={css.AllExamsSubject}>{exam.subject}</h3>
+                        <h3 className={css.allExamsdate}>
+                          {new Date(exam.date).toLocaleDateString("en-GB")}
+                        </h3>
+                        <div className={css.allExamsMarks}>
+                          <h3>{exam.marks} marks</h3>
+                          <h3>{exam.duration} mins</h3>
+                        </div>
+                        <h3 className={css.allExamsYear}>Year: {exam.year}</h3>
+                        <button
+                          onClick={() => handleClickExam(exam)}
+                          className={
+                            new Date(exam.date).toDateString() !==
+                            date.toDateString()
+                              ? css.disabled
+                              : css.startExam
+                          }
+                          disabled={
+                            new Date(exam.date).toDateString() !==
+                            date.toDateString()
+                          }
+                        >
+                          Start Exam
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={css.noExam}>
+                    <p>No exams available</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={css.practiceExam}>
+              <h2>Practice Exams</h2>
+              <div>
+                {practiceExams.length > 0 ? (
+                  <div>
+                    {practiceExams.map((exam) => (
+                      <div key={exam.id} className={css.practiceComponent}>
+                        <h3 className={css.AllExamsSubject}>{exam.subject}</h3>
+                        <h3 className={css.allExamsdate}>
+                          {new Date(exam.date).toLocaleDateString("en-GB")}
+                        </h3>
+                        <div className={css.allExamsMarks}>
+                          <h3>{exam.marks} marks</h3>
+                          <h3>{exam.duration} mins</h3>
+                        </div>
 
-                    <h3 className={css.allExamsYear}>Year: {exam.year}</h3>
-                    <button
-                      onClick={() => handleClickExam(exam)}
-                      className={css.startExam}
-                    >
-                      Start Exam
-                    </button>
+                        <h3 className={css.allExamsYear}>Year: {exam.year}</h3>
+                        <button
+                          onClick={() => handleClickExam(exam)}
+                          className={css.startExam}
+                        >
+                          Start Exam
+                        </button>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div className={css.noExam}>
-                <p>No exams available</p>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className={css.doneExam}>
-          <h2>Completed Exams</h2>
-          <div>
-            {doneExams.length > 0 ? (
-              <div>
-                {doneExams.map((exam) => (
-                  <div
-                    key={exam.id}
-                    className={
-                      exam.examType === "practice"
-                        ? css.practiceComponent
-                        : css.actualComponent
-                    }
-                  >
-                    <h3 className={css.AllExamsSubject}>{exam.subject}</h3>
-                    <h3 className={css.allExamsdate}>
-                      {exam.date.slice(0, 10)}
-                    </h3>
-                    <div className={css.allExamsMarks}>
-                      <h3>{exam.marks} marks</h3>
-                      <h3>{exam.duration} mins</h3>
-                    </div>
-                    <h3 className={css.allExamsYear}>Year: {exam.year}</h3>
+                ) : (
+                  <div className={css.noExam}>
+                    <p>No exams available</p>
                   </div>
-                ))}
+                )}
               </div>
-            ) : (
-              <div className={css.noExam}>
-                <p>No exams available</p>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

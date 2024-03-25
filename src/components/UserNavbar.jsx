@@ -76,30 +76,30 @@ const UserNavbar = () => {
 
   return (
     <div className={css.sideNavbar}>
-      <h2>Examify</h2>
-      <div className={css.navbarProfile}>
-        {filePath ? (
-          <img
-            src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
-            alt="avatar"
-          />
-        ) : imageUrl ? (
-          <img src={imageUrl} alt="Uploaded" />
-        ) : (
-          <label htmlFor="file-upload">
-            <img src={avatar} alt="" />
-          </label>
-        )}
+      <div>
+        <h2>Examify</h2>
+        <div className={css.navbarProfile}>
+          {filePath ? (
+            <img src={`http://localhost:3000/images/${filePath}`} alt="flo" />
+          ) : imageUrl ? (
+            <img src={imageUrl} alt="Uploaded" />
+          ) : (
+            <label htmlFor="file-upload">
+              <img src={avatar} alt="" />
+            </label>
+          )}
 
-        <input
-          type="file"
-          id="file-upload"
-          label="Image"
-          onChange={handleFileChange}
-        />
-        {showButton ? <button onClick={handleFileUpload}>Save</button> : ""}
-        <h2>{fullname}</h2>
+          <input
+            type="file"
+            id="file-upload"
+            label="Image"
+            onChange={handleFileChange}
+          />
+          {showButton ? <button onClick={handleFileUpload}>Save</button> : ""}
+          <h2>{fullname}</h2>
+        </div>
       </div>
+
       <div className={css.navbarMenu}>
         <div className={css.menuItems}>
           <h3>Menu Bar</h3>

@@ -5,7 +5,6 @@ import css from "../styles/UserPage.module.css";
 import UserNavbar from "./UserNavbar";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { IoSchoolSharp } from "react-icons/io5";
 import { FcDepartment } from "react-icons/fc";
 import { FaSchool } from "react-icons/fa6";
