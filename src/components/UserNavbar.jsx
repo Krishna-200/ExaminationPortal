@@ -80,7 +80,7 @@ const UserNavbar = () => {
       <div className={css.navbarProfile}>
         {filePath ? (
           <img
-            src={`https://examniationportal-backend.onrender.com/${filePath}`}
+            src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
             alt="avatar"
           />
         ) : imageUrl ? (
