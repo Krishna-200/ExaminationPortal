@@ -16,44 +16,43 @@ const AdminUserList = () => {
       throw error;
     }
   };
-  // console.log(studentData);
   useEffect(() => {
     getStudentData();
   }, []);
 
   return (
     <div className={css.container}>
-      <AdminNavbar />
-      <div className={css.detailsHeader}>
-        <h2>Student Details</h2>
-      </div>
-
-      <div className={css.details}>
-        <div className={css.detailContainer}>
-          <div className={css.studentMenu}>
-            <ul>
-              <li>Name</li>
-              <li>Roll No</li>
-              <li>year</li>
-              <li>Gender</li>
-              <li>Contact No.</li>
-              <li>Email Id</li>
-            </ul>
-            <hr />
+      <div className={css.homeContainer}>
+        <AdminNavbar />
+        <div>
+          <div className={css.detailsHeader}>
+            <h2>Students Details</h2>
           </div>
-          <div>
-            <ul className={css.studentData}>
-              {studentData.map((student) => (
-                <li key={student.id}>
-                  <p>{student.fullname}</p>
-                  <p>{student.rollno}</p>
-                  <p> {student.year}</p>
-                  <p> {student.gender}</p>
-                  <p> {student.mobileno}</p>
-                  <p> {student.mail}</p>
-                </li>
-              ))}
-            </ul>
+          <div className={css.details}>
+            <table className={css.studentMenu}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Roll No</th>
+                  <th>year</th>
+                  <th>Gender</th>
+                  <th>Contact No.</th>
+                  <th>Email Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                {studentData.map((student) => (
+                  <tr key={student.id}>
+                    <td>{student.fullname}</td>
+                    <td>{student.rollno}</td>
+                    <td> {student.year}</td>
+                    <td> {student.gender}</td>
+                    <td> {student.mobileno}</td>
+                    <td> {student.mail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -23,7 +23,9 @@ const UserAllExams = () => {
     allExams.forEach((exam) => {
       const allExamsType = exam.examType;
       if (allExamsType === "practice") {
-        practice.push(exam);
+        if (new Date(exam.date).toLocaleDateString("en-GB") >= today) {
+          practice.push(exam);
+        }
       } else {
         if (new Date(exam.date).toLocaleDateString("en-GB") >= today) {
           actual.push(exam);

@@ -5,6 +5,13 @@
   background-color: #ebebee;
 }
 
+.homeContainer {
+  display: flex;
+  margin-left: 300px;
+}
+
+/* navbar */
+
 .sideNavbar {
   background-color: #22284a;
   height: 90vh;
@@ -14,6 +21,9 @@
   margin: 20px;
   padding: 10px;
   border-radius: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .sideNavbar h2 {
   margin-top: 10px;
@@ -21,9 +31,169 @@
   text-align: center;
 }
 
-.homeContainer {
+.navbarProfile {
+  background-color: #363f5b;
   display: flex;
-  margin-left: 300px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40px;
+  margin: 20px;
+}
+
+.navbarProfile h2 {
+  font-size: 18px;
+  width: 70%;
+}
+
+.navbarProfile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.navbarProfile input {
+  display: none;
+}
+
+.navbarProfile button {
+  width: 60%;
+  height: 35px;
+  border-radius: 25px;
+  background-color: green;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbarProfile h2 {
+  color: white;
+}
+
+.navbarMenu {
+  height: 60%;
+  color: white;
+}
+
+.menuItems {
+  /* align-items: center; */
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuItems h3 {
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 30%;
+}
+
+.menuItems table {
+  display: flex;
+  height: 70%;
+  font-size: 17px;
+  margin-left: 30px;
+}
+
+.menuItems tr {
+  cursor: pointer;
+}
+
+.menuItems p {
+  margin: 0;
+  margin-left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7246f6;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.logoutButton :nth-child(1) {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+/* Admin main page */
+
+.profile {
+  height: 100%;
+  background-color: white;
+  /* padding: 70px; */
+  width: 40vh;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 33%;
+}
+
+.avatar img {
+  width: 150px;
+  border-radius: 50%;
+  height: 150px;
+  cursor: pointer;
+}
+
+.avatar input {
+  display: none;
+}
+
+.avatar h2 {
+  font-size: 18px;
+}
+
+.line {
+  width: 90%;
+  height: 3px;
+  border-radius: 20px;
+  background-color: #ebebee;
+}
+
+.info {
+  height: 33%;
+  margin: 20px;
+}
+
+.info span {
+  display: flex;
+  align-items: center;
+}
+
+.info span :nth-child(1) {
+  background-color: #7246f6;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.info p {
+  margin: 8px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .detailsHeader {
@@ -76,12 +246,23 @@
   padding: 20px;
 }
 
-.studentMenu :nth-child(6) {
+.studentMenu :nth-child(6),
+.studentMenu :nth-child(7) {
   border-right: none;
 }
 
-.studentMenu :nth-child(4) {
+.mobileno {
+  border-right: 2px solid rgb(113, 113, 113) !important;
+}
+
+.studentMenu {
   text-align: center;
+}
+
+/* Upload test styles */
+
+.mainContainer {
+  width: 100%;
 }
 
 .testHeading {
@@ -101,19 +282,19 @@
 
 .examDetails,
 .mcqTemp {
-  width: 25%;
+  width: 30%;
   /* border: 2px solid red; */
 }
 .test {
   display: flex;
   gap: 50px;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   /* margin-left: 80px; */
   margin-top: 30px;
 }
 .test p {
-  color: white;
+  color: #22284a;
   font-weight: bold;
   display: flex;
   margin-left: 10px;
@@ -140,7 +321,8 @@
 .detailsForm select,
 .detailsForm input,
 .mcqForm input,
-.mcqForm select {
+.mcqForm select,
+.mcqForm textarea {
   outline: none;
   /* border: 2px solid black; */
   border: 0;
@@ -180,7 +362,8 @@
   border: 0;
 }
 
-.detailButtons button:disabled {
+.detailButtons button:disabled,
+.mcqButtons button:disabled {
   background-color: #81adfa;
   cursor: not-allowed;
 }
@@ -199,13 +382,16 @@
   width: 30%;
   display: flex;
   flex-direction: column;
+  margin-right: 100px;
 }
+
 .questions {
   overflow: auto;
   height: 100%;
 }
+
 .questions::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -281,10 +467,13 @@
   cursor: pointer;
 }
 
+/* all exams styles */
+
 .exams {
-  width: 100vh;
+  /* width: 100vh; */
   display: flex;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .scheduledExam,
@@ -292,7 +481,7 @@
 .doneExam {
   /* border: 2px solid red; */
   border-radius: 20px;
-  height: 60vh;
+  height: 70vh;
   overflow-y: auto;
   margin-top: 30px;
 }
