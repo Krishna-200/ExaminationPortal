@@ -80,7 +80,10 @@ const UserNavbar = () => {
         <h2>Examify</h2>
         <div className={css.navbarProfile}>
           {filePath ? (
-            <img src={`http://localhost:3000/images/${filePath}`} alt="flo" />
+            <img
+              src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
+              alt="flo"
+            />
           ) : imageUrl ? (
             <img src={imageUrl} alt="Uploaded" />
           ) : (
