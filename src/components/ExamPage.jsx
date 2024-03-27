@@ -20,12 +20,33 @@ const ExamPage = () => {
   const [userMobile, setUserMobile] = useState("");
   const [verifyModalIsOpen, setVerifymodalIsOpen] = useState(false);
   const [showClose, setShowClose] = useState(false);
+  const [image, setImage] = useState("");
+  const [randomNumbers, setRandomNumbers] = useState([]);
+  const [screenShots, setScreenShots] = useState([]);
+  const examDurationInSeconds = exam.duration * 60;
+
+  useEffect(() => {
+    const generateRandomNumbers = () => {
+      const randomNumbersArray = [];
+      while (randomNumbersArray.length < 5) {
+        const newRandomNumber = Math.floor(
+          Math.random() * examDurationInSeconds
+        );
+        if (!randomNumbersArray.includes(newRandomNumber)) {
+          randomNumbersArray.push(newRandomNumber);
+        }
+      }
+      randomNumbersArray.sort((a, b) => a - b);
+      setRandomNumbers(randomNumbersArray);
+    };
+
+    generateRandomNumbers();
+  }, [exam.duration]);
 
   const [userAnswers, setUserAnswers] = useState(
     Array(exam.totalQuestions).fill(null)
   );
   const [totalMarks, setTotalMarks] = useState(0);
-  // const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
   async function getQuestions() {
@@ -134,6 +155,26 @@ const ExamPage = () => {
     console.log(status);
     document.exitFullscreen();
     navigate("/UserResult/" + param);
+    const saveScreenshots = async (screenShots, examId, userId) => {
+      try {
+        const formData = new FormData();
+        screenShots.forEach((screenshot, index) => {
+          formData.append(`screenshots[${index}]`, screenshot);
+        });
+        formData.append("examId", exam._id);
+        formData.append("userId", param);
+
+        await axios.post("/saveScreenshots", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    saveScreenshots(screenShots);
   }
 
   const minutes = Math.floor(remainingTime / 60);
@@ -167,6 +208,21 @@ const ExamPage = () => {
   async function handleFullScreen() {
     document.documentElement.requestFullscreen().catch((error) => {});
   }
+
+  async function handleScreenshot() {
+    if (screenShots.length < 5) {
+      const screenshot = webRef.current.getScreenshot();
+      console.log(screenshot);
+      setImage(screenshot);
+      setScreenShots((prevShots) => [...prevShots, screenshot]);
+    }
+  }
+
+  useEffect(() => {
+    if (randomNumbers.includes(remainingTime)) {
+      handleScreenshot();
+    }
+  }, [remainingTime, randomNumbers, exam.duration]);
 
   return (
     <div className={css.container}>

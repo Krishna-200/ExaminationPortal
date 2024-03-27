@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import css from "../styles/UserPage.module.css";
 import UserNavbar from "./UserNavbar";
@@ -22,6 +22,9 @@ const Userpage = () => {
   const [filePath, setFilePath] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [showButton, setShowButton] = useState(false);
+  const [exams, setExams] = useState("");
+  const today = new Date().toLocaleDateString("en-GB");
+  const [recentExams, setRecentExams] = useState([]);
 
   async function getUserData() {
     try {
@@ -100,7 +103,7 @@ const Userpage = () => {
     const response = await axios.get("/getImage", { params: { id: param } });
     if (response.data.length > 0) {
       setFilePath(response.data[0].file);
-      console.log(response.data[0].file);
+      // console.log(response.data[0].file);
     }
     setShowButton(false);
   }
@@ -108,6 +111,30 @@ const Userpage = () => {
   useEffect(() => {
     getImage();
   }, []);
+
+  async function getExams() {
+    const response = await axios.get("/AllExams");
+    // console.log(response.data);
+    setExams(response.data);
+  }
+
+  useEffect(() => {
+    getExams();
+  }, []);
+
+  useEffect(() => {
+    if (Array.isArray(exams)) {
+      const updatedRecentExams = exams.filter((exam) => {
+        return (
+          exam.year === "second" &&
+          new Date(exam.date).toLocaleDateString("en-GB") > today
+        );
+      });
+      setRecentExams(updatedRecentExams);
+    }
+  }, [exams]);
+
+  console.log(recentExams);
 
   return (
     <div className={css.container}>
@@ -178,6 +205,31 @@ const Userpage = () => {
           </div>
         </div>
       </div>
+      <Link to={"/AllExams/" + param} style={{ textDecoration: "none" }}>
+        <div className={css.recentExams}>
+          <h2>Upcomming Exams</h2>
+          <div>
+            {recentExams.map((exam) => (
+              <div
+                key={exam.id}
+                className={`${css.examCard} ${
+                  exam.examType === "practice" ? css.practice : css.actual
+                }`}
+              >
+                <div>
+                  <h3>Subject: {exam.subject}</h3>
+                  <h3>({exam.examType} exam)</h3>
+                </div>
+                <div>
+                  <p>Year:{exam.year} </p>
+                  <p>Department:{exam.department} </p>
+                  <p> Duration:{exam.duration} min </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Link>
     </div>
   );
 };
