@@ -20,6 +20,7 @@ import AllResutls from "./components/AllResutls.jsx";
 import UserResult from "./components/UserResult.jsx";
 import InstructionPage from "./components/InstructionPage.jsx";
 import LandingPage from "./components/LandingPage.jsx";
+import ResultDetails from "./components/ResultDetails.jsx";
 
 function App() {
   axios.defaults.baseURL = "https://examniationportal-backend.onrender.com";
