@@ -51,6 +51,7 @@ function App() {
         <Route exact path="/UploadTest/:id/:examId" element={<UploadTest />} />
         <Route exact path="/AllExams/:id" element={<AllExams />} />
         <Route exact path="/AllResults/:id" element={<AllResutls />} />
+        <Route path="ResultDetails/:id" element={<ResultDetails />} />
         <Route exact path="/" element={<LandingPage />} />
       </Routes>
     </UserContextProvider>

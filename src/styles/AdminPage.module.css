@@ -1,8 +1,11 @@
+body {
+  background-color: #ebebee;
+}
+
 .container {
   background-size: cover;
   height: 100vh;
   font-family: roboto;
-  background-color: #ebebee;
 }
 
 .homeContainer {
@@ -257,6 +260,10 @@
 
 .studentMenu {
   text-align: center;
+}
+
+.studentMenu tbody {
+  cursor: pointer;
 }
 
 /* Upload test styles */

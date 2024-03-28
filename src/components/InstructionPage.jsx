@@ -139,7 +139,15 @@ const InstructionPage = () => {
             <Webcam ref={webRef} className={css.cam} />
           </div>
           <button disabled={!button} onClick={handleStartExam}>
-            Start Exam
+            {!button ? (
+              <div className={css.loadingOtp}>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            ) : (
+              "Start Exam"
+            )}
           </button>
         </div>
       </div>

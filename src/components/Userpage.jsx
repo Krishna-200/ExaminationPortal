@@ -204,32 +204,32 @@ const Userpage = () => {
             </span>
           </div>
         </div>
-      </div>
-      <Link to={"/AllExams/" + param} style={{ textDecoration: "none" }}>
-        <div className={css.recentExams}>
-          <h2>Upcomming Exams</h2>
-          <div>
-            {recentExams.map((exam) => (
-              <div
-                key={exam.id}
-                className={`${css.examCard} ${
-                  exam.examType === "practice" ? css.practice : css.actual
-                }`}
-              >
-                <div>
-                  <h3>Subject: {exam.subject}</h3>
-                  <h3>({exam.examType} exam)</h3>
+        <Link to={"/AllExams/" + param} style={{ textDecoration: "none" }}>
+          <div className={css.recentExams}>
+            <h2>Upcomming Exams</h2>
+            <div>
+              {recentExams.map((exam) => (
+                <div
+                  key={exam.id}
+                  className={`${css.examCard} ${
+                    exam.examType === "practice" ? css.practice : css.actual
+                  }`}
+                >
+                  <div>
+                    <h3>Subject: {exam.subject}</h3>
+                    <h3>({exam.examType} exam)</h3>
+                  </div>
+                  <div>
+                    <p>Year:{exam.year} </p>
+                    <p>Department:{exam.department} </p>
+                    <p> Duration:{exam.duration} min </p>
+                  </div>
                 </div>
-                <div>
-                  <p>Year:{exam.year} </p>
-                  <p>Department:{exam.department} </p>
-                  <p> Duration:{exam.duration} min </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };
