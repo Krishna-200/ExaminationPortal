@@ -208,7 +208,7 @@ body {
 
 .details {
   margin: 20px;
-  width: 100vh;
+  width: 100%;
 }
 
 .studentMenu {
@@ -250,8 +250,19 @@ body {
 }
 
 .studentMenu :nth-child(6),
-.studentMenu :nth-child(7) {
+.studentMenu :nth-child(8) {
   border-right: none;
+}
+
+.studentMenu :nth-child(8) p {
+  background-color: #7246f6;
+  margin: 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .mobileno {
@@ -260,10 +271,6 @@ body {
 
 .studentMenu {
   text-align: center;
-}
-
-.studentMenu tbody {
-  cursor: pointer;
 }
 
 /* Upload test styles */
@@ -666,4 +673,63 @@ body {
 }
 .fail p {
   background-color: red;
+}
+
+/* results details page styles */
+
+.resultDetails {
+  color: #22284a;
+}
+
+.examInfo {
+  padding: 10px;
+}
+
+.examInfo p,
+.resultInfo p {
+  margin: 2px;
+  text-transform: capitalize;
+}
+
+.examInfo table,
+.examInfo tr,
+.examInfo td,
+.resultInfo table,
+.resultInfo tr,
+.resultInfo td {
+  border: 2px solid rgb(61, 61, 61);
+  width: 400px;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.examInfo h3,
+.resultInfo h3 {
+  font-size: 22px;
+  color: #7246f6;
+}
+
+.resultInfo {
+  padding: 10px;
+}
+
+.results {
+  display: flex;
+}
+
+.screenShots {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.screenShots img {
+  width: 300px;
+  height: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.screenShots h2 {
+  color: #22284a;
 }

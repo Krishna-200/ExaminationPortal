@@ -47,7 +47,7 @@ const AllResutls = () => {
               </thead>
               <tbody>
                 {results.map((result) => (
-                  <tr key={result.id} onClick={() => resultDetails(result)}>
+                  <tr key={result.id}>
                     <td>{result.name}</td>
                     <td>{result.subject}</td>
                     <td>{new Date(result.date).toLocaleDateString("en-GB")}</td>
@@ -58,6 +58,9 @@ const AllResutls = () => {
                       className={result.stauts === "true" ? css.pass : css.fail}
                     >
                       {result.stauts === "true" ? <p>pass</p> : <p>fail</p>}
+                    </td>
+                    <td onClick={() => resultDetails(result)}>
+                      <p>More Details</p>
                     </td>
                   </tr>
                 ))}
