@@ -80,18 +80,20 @@ const AdminNavbar = () => {
       <div className={css.navbar}>
         <h2>Examify</h2>
         <div className={css.navbarProfile}>
-          {filePath ? (
-            <img
-              src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
-              alt="flo"
-            />
-          ) : imageUrl ? (
-            <img src={imageUrl} alt="Uploaded" />
-          ) : (
-            <label htmlFor="file-upload">
-              <img src={avatar} alt="" />
-            </label>
-          )}
+          <div>
+            {filePath ? (
+              <img
+                src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
+                alt="flo"
+              />
+            ) : imageUrl ? (
+              <img src={imageUrl} alt="Uploaded" />
+            ) : (
+              <label htmlFor="file-upload">
+                <img src={avatar} alt="" />
+              </label>
+            )}
+          </div>
 
           <input
             type="file"
