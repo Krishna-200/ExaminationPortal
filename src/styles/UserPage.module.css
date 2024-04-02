@@ -22,8 +22,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 200px; */
 }
+
+.navbar {
+  height: 100%;
+  margin: 10px;
+}
+
 .sideNavbar h2 {
   margin-top: 10px;
   color: white;
@@ -36,20 +41,26 @@
   flex-direction: column;
   align-items: center;
   border-radius: 40px;
-  margin: 20px;
+  height: 25%;
+  justify-content: center;
 }
 
 .navbarProfile h2 {
-  font-size: 18px;
+  font-size: 2.5vh;
   width: 70%;
+  margin: 0;
+}
+
+.navbarProfile div {
+  width: 55%;
+  margin: 8px;
+  height: 55%;
 }
 
 .navbarProfile img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  margin: 10px;
-  margin-top: 20px;
   cursor: pointer;
 }
 
@@ -74,42 +85,45 @@
 }
 
 .navbarMenu {
-  height: 60%;
+  height: 58%;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.menuItems {
-  /* align-items: center; */
-  height: 50%;
+.menuItems,
+.queryItems {
+  /* border: 2px solid red; */
+  margin: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.menuItems h3 {
-  font-size: 23px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+.menuItems h3,
+.queryItems h3 {
+  font-size: 2.5vh;
   height: 30%;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 1vh;
 }
 
-.menuItems table {
-  display: flex;
-  height: 70%;
-  font-size: 17px;
-  margin-left: 30px;
+.menuItems table,
+.queryItems table {
+  font-size: 2.2vh;
 }
 
-.menuItems tr {
+.menuItems tr,
+.queryItems tr {
   cursor: pointer;
 }
 
-.menuItems p {
+.menuItems p,
+.queryItems p {
   margin: 0;
-  margin-left: 15px;
+  margin-bottom: 1vh;
   color: white;
-  font-size: 20px;
 }
 
 .logoutButton {
@@ -121,11 +135,11 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin: 10px;
+  height: 6%;
+  font-size: 2.2vh;
 }
 
 .logoutButton :nth-child(1) {
-  font-size: 25px;
   margin-right: 20px;
 }
 

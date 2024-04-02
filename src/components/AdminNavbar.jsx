@@ -77,7 +77,7 @@ const AdminNavbar = () => {
 
   return (
     <div className={css.sideNavbar}>
-      <div>
+      <div className={css.navbar}>
         <h2>Examify</h2>
         <div className={css.navbarProfile}>
           {filePath ? (
@@ -175,7 +175,7 @@ const AdminNavbar = () => {
               </tbody>
             </table>
           </div>
-          <div className={css.menuItems}>
+          <div className={css.queryItems}>
             <h3>Any Quries</h3>
             <table>
               <tbody>
