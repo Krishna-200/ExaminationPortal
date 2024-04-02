@@ -205,6 +205,20 @@
   background-color: rgb(61, 192, 70);
 }
 
+.tabChangeModal {
+  width: 450px;
+  height: 200px;
+}
+
+.tabChangeModal button {
+  width: 20%;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: rgb(64, 64, 246);
+  color: white;
+}
+
 .webcam {
   width: 200px;
   height: 200px;

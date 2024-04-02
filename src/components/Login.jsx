@@ -138,7 +138,7 @@ const Login = () => {
       >
         <h1>Examify</h1>
         <img src={adminSVG} alt="" />
-        <h2>Admin Login Click Here</h2>
+        <h2>User Login Click Here</h2>
         <button onClick={handleUserClick}>User Login</button>
       </div>
       <div

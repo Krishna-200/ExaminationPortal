@@ -102,10 +102,6 @@ const AdminPage = () => {
               <p>{department}</p>
             </span>
             <span>
-              <FcDepartment />
-              <p>CSE</p>
-            </span>
-            <span>
               <FaSchool />
               <p>Aditya collge of engineering</p>
             </span>

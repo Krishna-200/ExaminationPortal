@@ -19,6 +19,8 @@ const ExamPage = () => {
   const [userName, setUserName] = useState("");
   const [userMobile, setUserMobile] = useState("");
   const [verifyModalIsOpen, setVerifymodalIsOpen] = useState(false);
+  const [tabOpen, setTabOpen] = useState(false);
+  const [tabChangeCount, setTabChangeCount] = useState(0);
   const [showClose, setShowClose] = useState(false);
   const [image, setImage] = useState("");
   const [randomNumbers, setRandomNumbers] = useState([]);
@@ -152,7 +154,7 @@ const ExamPage = () => {
       stauts: status,
       mobileno: userMobile,
     });
-    console.log(status);
+    // console.log(status);
     document.exitFullscreen();
     navigate("/UserResult/" + param);
     const saveScreenshots = async (screenShots, examId, userId) => {
@@ -212,7 +214,7 @@ const ExamPage = () => {
   async function handleScreenshot() {
     if (screenShots.length < 5) {
       const screenshot = webRef.current.getScreenshot();
-      console.log(screenshot);
+      // console.log(screenshot);
       setImage(screenshot);
       setScreenShots((prevShots) => [...prevShots, screenshot]);
     }
@@ -224,8 +226,55 @@ const ExamPage = () => {
     }
   }, [remainingTime, randomNumbers, exam.duration]);
 
+  useEffect(() => {
+    function handleOnBeforeUnload(event) {
+      event.preventDefault();
+      return (event.returnValue = "");
+    }
+    window.addEventListener("beforeunload", handleOnBeforeUnload, {
+      capture: true,
+    });
+    return () => {
+      window.removeEventListener("beforeunload", handleOnBeforeUnload, {
+        capture: true,
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setTabChangeCount((count) => count + 1);
+        setTabOpen(true);
+        if (tabChangeCount >= 2) {
+          handleFinish();
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [tabChangeCount]);
+
+  async function tabChnageModal() {
+    setTabOpen(false);
+  }
+
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className={css.container}>
+    <div
+      className={css.container}
+      onCopy={(event) => {
+        event.preventDefault();
+      }}
+      onContextMenu={handleContextMenu}
+    >
       <div className={css.mainHeading}>
         <h1>
           {userName} - {exam.examType} Exam
@@ -323,6 +372,13 @@ const ExamPage = () => {
             <button onClick={() => setVerifymodalIsOpen(false)}>Close</button>
           )}
         </div>
+      </Modal>
+
+      <Modal isOpen={tabOpen} className={`${css.modal} ${css.tabChangeModal}`}>
+        <h2>Don't switch tabs during the test</h2>
+        <h2>If you change tabs again for {3 - tabChangeCount} times</h2>
+        <h2>The exam will be closed</h2>
+        <button onClick={() => tabChnageModal()}>Close</button>
       </Modal>
     </div>
   );

@@ -16,7 +16,7 @@ const UserAllExams = () => {
     const response = await axios.get("/AllExams", { params: { id } });
     const allExams = response.data;
     const today = new Date().toLocaleDateString("en-GB");
-    console.log(today);
+    // console.log(today);
     const actual = [];
     const practice = [];
 
