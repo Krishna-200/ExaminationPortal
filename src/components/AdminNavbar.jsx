@@ -66,7 +66,7 @@ const AdminNavbar = () => {
     const response = await axios.get("/getImage", { params: { id: param } });
     if (response.data.length > 0) {
       setFilePath(response.data[0].file);
-      // console.log(response.data[0].file);
+      console.log(response.data[0].file);
     }
     setShowButton(false);
   }

@@ -14,8 +14,9 @@ const UserNavbar = () => {
   const navigate = useNavigate();
 
   const [fullname, setFullname] = useState("");
-  const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
+  const [filePath, setFilePath] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [showButton, setShowButton] = useState(false);
 
   async function getUserData() {
@@ -37,32 +38,36 @@ const UserNavbar = () => {
     navigate("/");
   }
 
-  async function handleFileChange(e) {
-    // console.log(e.target.files[0]);
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      // console.log(reader.result);
-      setImage(reader.result);
+  function handleFileChange(ev) {
+    setShowButton(true);
+    setFile(ev.target.files[0]);
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      setImageUrl(e.target.result);
     };
-    reader.onerror = () => {
-      console.log(error);
-    };
-    if (e.target.files[0]) {
-      setShowButton(true);
-    }
+    reader.readAsDataURL(ev.target.files[0]);
   }
 
-  async function handleImageUpload() {
-    const response = await axios.post("/imageUpload", { id: param, image });
-    // console.log(response);
+  async function handleFileUpload() {
+    const formData = new FormData();
+    formData.append("file", file);
     setShowButton(false);
+    const response = await axios.post("/imageUpload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      params: { id: param },
+    });
   }
 
   async function getImage() {
     const response = await axios.get("/getImage", { params: { id: param } });
-    // console.log(response);
-    setFile(response.data[0].image);
+    if (response.data.length > 0) {
+      setFilePath(response.data[0].file);
+      // console.log(response.data[0].file);
+    }
+    setShowButton(false);
   }
 
   useEffect(() => {
@@ -74,18 +79,20 @@ const UserNavbar = () => {
       <div className={css.navbar}>
         <h2>Examify</h2>
         <div className={css.navbarProfile}>
-          {filePath ? (
-            <img
-              src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
-              alt="flo"
-            />
-          ) : imageUrl ? (
-            <img src={imageUrl} alt="Uploaded" />
-          ) : (
-            <label htmlFor="file-upload">
-              <img src={avatar} alt="" />
-            </label>
-          )}
+          <div>
+            {filePath ? (
+              <img
+                src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
+                alt="flo"
+              />
+            ) : imageUrl ? (
+              <img src={imageUrl} alt="Uploaded" />
+            ) : (
+              <label htmlFor="file-upload">
+                <img src={avatar} alt="" />
+              </label>
+            )}
+          </div>
 
           <input
             type="file"
@@ -93,7 +100,7 @@ const UserNavbar = () => {
             label="Image"
             onChange={handleFileChange}
           />
-          {showButton ? <button onClick={handleImageUpload}>Save</button> : ""}
+          {showButton ? <button onClick={handleFileUpload}>Save</button> : ""}
           <h2>{fullname}</h2>
         </div>
 
