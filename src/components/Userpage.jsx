@@ -165,7 +165,7 @@ const Userpage = () => {
             {filePath ? (
               <img
                 src={`https://examniationportal-backend.onrender.com/images/${filePath}`}
-                alt="avatar"
+                alt="flo"
               />
             ) : imageUrl ? (
               <img src={imageUrl} alt="Uploaded" />
